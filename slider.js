@@ -4,7 +4,7 @@
  * Modified and enhanced by Juergen Wahlmann on 3/5/15
  */
 
-var app = angular.module('ionSlider',['ngRoute']);
+var app = angular.module('ionSlider',[]);
 
 
 app.directive('ionslider',function($timeout){
@@ -32,7 +32,7 @@ app.directive('ionslider',function($timeout){
         replace:true,
         link:function($scope,$element,attrs){
             (function init(){
-                $element.ionRangeSlider({
+                $($element).ionRangeSlider({
                     min: $scope.min,
                     max: $scope.max,
                     type: $scope.type,
@@ -52,16 +52,16 @@ app.directive('ionslider',function($timeout){
                 });
             })();
             $scope.$watch('min', function(value) {
-                $timeout(function(){ $element.data("ionRangeSlider").update({min: value}); });
+                $timeout(function(){ $($element).data("ionRangeSlider").update({min: value}); });
             },true);
             $scope.$watch('max', function(value) {
-                $timeout(function(){ $element.data("ionRangeSlider").update({max: value}); });
+                $timeout(function(){ $($element).data("ionRangeSlider").update({max: value}); });
             });
             $scope.$watch('from', function(value) {
-                $timeout(function(){ $element.data("ionRangeSlider").update({from: value}); });
+                $timeout(function(){ $($element).data("ionRangeSlider").update({from: value}); });
             });
             $scope.$watch('disable', function(value) {
-                $timeout(function(){ $element.data("ionRangeSlider").update({disable: value}); });
+                $timeout(function(){ $($element).data("ionRangeSlider").update({disable: value}); });
             });
         }
     }
